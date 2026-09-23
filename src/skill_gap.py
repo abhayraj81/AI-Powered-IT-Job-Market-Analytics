@@ -1,6 +1,4 @@
 """
-skill_gap.py
-============
 Skill Gap Analyzer for the IT Job Market Analytics project.
 
 Methodology:
@@ -30,11 +28,11 @@ import plotly.graph_objects as go
 
 from src.preprocessing import normalize_skill
 
-# ---------------------------------------------------------------------------
+
 # Threshold: a skill is "required" if it appears in ≥ this % of roles
 # in the target category.  Lowered vs previous dataset because the IT dataset
 # has ~6 skills per role on average (vs 18 for the previous dataset).
-# ---------------------------------------------------------------------------
+
 MIN_SUPPORT = 0.08   # 8% of roles in the category
 
 
