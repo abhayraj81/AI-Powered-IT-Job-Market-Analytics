@@ -224,17 +224,9 @@ Opens at `http://localhost:8501`
 
 ## Author
 
-**Name:** [Your Name Here]  
+**Name:** Abhay Raj  
 **Program:** MCA  
-**Institution:** [Your Institution]  
+**Institution:** Allenhouse Institute of Technology  
 **Internship:** AICTE | IBM SkillsBuild Data Analytics with AI Internship 2026
 
----
 
-## References
-
-1. Dataset: https://www.kaggle.com/datasets/batuhanmutlu/job-skill-set
-2. scikit-learn: https://scikit-learn.org
-3. Streamlit: https://docs.streamlit.io
-4. Plotly: https://plotly.com/python/
-5. NLTK: https://www.nltk.org
