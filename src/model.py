@@ -1,6 +1,4 @@
 """
-model.py
-========
 Machine Learning component: IT Role Category Classifier.
 
 Predicts the inferred category of an IT role from its job description text.
