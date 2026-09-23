@@ -1,6 +1,4 @@
 """
-analysis.py
-===========
 EDA and visualisation functions for the IT Job Market Analytics project.
 
 Accepts the cleaned DataFrame from preprocessing.load_and_clean().
