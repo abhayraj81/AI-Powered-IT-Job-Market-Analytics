@@ -26,9 +26,8 @@ from wordcloud import WordCloud
 PLOTLY_PALETTE = px.colors.qualitative.Safe
 
 
-# ============================================================================
+
 # 1.  Category overview
-# ============================================================================
 
 def category_distribution(df: pd.DataFrame):
     """Bar + pie charts for inferred category distribution."""
@@ -55,9 +54,9 @@ def category_distribution(df: pd.DataFrame):
     return bar, pie, counts
 
 
-# ============================================================================
+
 # 2.  Job Title analysis
-# ============================================================================
+
 
 def top_job_titles(df: pd.DataFrame, n: int = 25):
     """All titles are unique (after dedup), so this shows top by skill count."""
@@ -91,9 +90,9 @@ def titles_by_category(df: pd.DataFrame, category: str, n: int = 15):
     return fig, sub
 
 
-# ============================================================================
+
 # 3.  Skill analysis
-# ============================================================================
+
 
 def get_skill_counts(df: pd.DataFrame) -> pd.Series:
     """Return skill → frequency across all job roles."""
@@ -166,9 +165,8 @@ def skills_per_category_heatmap(df: pd.DataFrame, top_n_skills: int = 30):
     return fig, heat_norm
 
 
-# ============================================================================
 # 4.  Skill co-occurrence
-# ============================================================================
+
 
 def skill_cooccurrence(df: pd.DataFrame, top_n: int = 25) -> pd.DataFrame:
     """Return DataFrame of most common skill pairs."""
@@ -203,9 +201,8 @@ def skill_cooccurrence_heatmap(df: pd.DataFrame, top_n: int = 20):
     return fig, matrix
 
 
-# ============================================================================
 # 5.  Category-distinctive skills
-# ============================================================================
+
 
 def category_unique_skills(df: pd.DataFrame, top_n: int = 10) -> dict:
     """Relative concentration score per category (TF-IDF-style)."""
@@ -223,9 +220,7 @@ def category_unique_skills(df: pd.DataFrame, top_n: int = 10) -> dict:
     return result
 
 
-# ============================================================================
 # 6.  Certification analysis (new: unique to this dataset)
-# ============================================================================
 
 def get_cert_counts(df: pd.DataFrame) -> pd.Series:
     """Return certification → frequency across all roles."""
@@ -282,9 +277,8 @@ def cert_count_distribution(df: pd.DataFrame):
     return fig
 
 
-# ============================================================================
 # 7.  Word Cloud
-# ============================================================================
+
 
 def generate_wordcloud(df: pd.DataFrame, column: str = "skills_str",
                        category: str = None):
@@ -309,9 +303,9 @@ def generate_wordcloud(df: pd.DataFrame, column: str = "skills_str",
     return fig
 
 
-# ============================================================================
+
 # 8.  Job Description word frequency
-# ============================================================================
+
 
 def top_description_words(df: pd.DataFrame, n: int = 30) -> pd.DataFrame:
     """Top words in job descriptions (stopwords removed)."""
@@ -360,9 +354,9 @@ def plot_top_words(freq_df: pd.DataFrame):
     return fig
 
 
-# ============================================================================
+
 # 9.  Skill count distribution
-# ============================================================================
+
 
 def skill_count_distribution(df: pd.DataFrame):
     """Histogram of skill counts per IT role."""
