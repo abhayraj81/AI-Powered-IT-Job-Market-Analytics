@@ -22,9 +22,10 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 
-# ---------------------------------------------------------------------------
+
 # Stopword list (lightweight – avoids mandatory NLTK data download)
-# ---------------------------------------------------------------------------
+
+
 _BASE_STOPWORDS = {
     "a", "an", "the", "and", "or", "but", "in", "on", "at", "to", "for",
     "of", "with", "by", "from", "as", "is", "was", "are", "were", "be",
@@ -101,9 +102,8 @@ def build_tfidf_matrix(df: pd.DataFrame, text_col: str = "job_description",
     return vectorizer, matrix, cleaned
 
 
-# ---------------------------------------------------------------------------
 # TF-IDF: Top terms per category
-# ---------------------------------------------------------------------------
+
 
 def top_tfidf_terms_by_category(df: pd.DataFrame, vectorizer, tfidf_matrix,
                                  n: int = 15) -> dict:
@@ -139,9 +139,9 @@ def plot_tfidf_terms(tfidf_by_cat: dict, category: str):
     return fig
 
 
-# ---------------------------------------------------------------------------
+
 # Job Similarity / Recommendation
-# ---------------------------------------------------------------------------
+
 
 def compute_similarity_matrix(tfidf_matrix) -> np.ndarray:
     """Return cosine similarity matrix (n_jobs × n_jobs)."""
@@ -194,9 +194,9 @@ def recommend_jobs_by_skills(df: pd.DataFrame, user_skills: list[str],
     return pd.DataFrame(rows)
 
 
-# ---------------------------------------------------------------------------
+
 # N-gram analysis
-# ---------------------------------------------------------------------------
+
 
 def extract_ngrams(texts: pd.Series, n: int = 2, top_k: int = 30) -> pd.DataFrame:
     """
