@@ -1,6 +1,4 @@
 """
-nlp.py
-======
 NLP components for the AI-Powered Job Market Analytics project.
 
 Provides:
