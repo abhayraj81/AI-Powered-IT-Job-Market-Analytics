@@ -1,6 +1,4 @@
 """
-preprocessing.py
-================
 Data loading, cleaning, and skill normalisation for the
 AI-Powered IT Job Market Analytics & Skill Gap Analyzer.
 
@@ -19,12 +17,13 @@ from pathlib import Path
 
 import pandas as pd
 
-# ---------------------------------------------------------------------------
+
 # Category inference rules
 # Each key is a canonical category name.
 # Rules are checked in order; first match wins.
 # keywords are matched case-insensitively against the job title.
-# ---------------------------------------------------------------------------
+
+
 CATEGORY_RULES = {
     "AI / Machine Learning": [
         "artificial intelligence", "machine learning", " ai ", "ai/ml",
@@ -170,9 +169,9 @@ def infer_category(title: str) -> str:
     return "Other IT"
 
 
-# ---------------------------------------------------------------------------
+
 # Skill normalisation mapping
-# ---------------------------------------------------------------------------
+
 SKILL_NORMALIZATION = {
     # Cloud providers
     "amazon web services": "AWS",
