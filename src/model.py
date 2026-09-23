@@ -47,13 +47,7 @@ MIN_CATEGORY_SAMPLES = 5   # categories with fewer samples are excluded from ML
 
 
 def prepare_features(df: pd.DataFrame):
-    """
-    Return (X, y) for the IT classifier.
-    - X = cleaned job descriptions
-    - y = inferred category labels
-    Excludes categories with fewer than MIN_CATEGORY_SAMPLES samples
-    (too few to meaningfully train/test).
-    """
+    
     cat_counts = df["category"].value_counts()
     valid_cats = cat_counts[cat_counts >= MIN_CATEGORY_SAMPLES].index.tolist()
 
@@ -67,7 +61,7 @@ def prepare_features(df: pd.DataFrame):
 
 def split_data(X: pd.Series, y: pd.Series,
                test_size: float = 0.20, random_state: int = 42):
-    """Stratified 80/20 train-test split."""
+    
     splitter = StratifiedShuffleSplit(n_splits=1, test_size=test_size,
                                       random_state=random_state)
     idx_train, idx_test = next(splitter.split(X, y))
@@ -89,7 +83,7 @@ CLASSIFIERS = {
 
 
 def _make_pipeline(classifier) -> Pipeline:
-    """TF-IDF + classifier pipeline."""
+    
     return Pipeline([
         ("tfidf", TfidfVectorizer(
             max_features=5000,
@@ -103,7 +97,7 @@ def _make_pipeline(classifier) -> Pipeline:
 
 
 def train_and_evaluate_all(X_train, X_test, y_train, y_test) -> pd.DataFrame:
-    """Train all classifiers and return comparison DataFrame."""
+    
     results = []
     for name, clf in CLASSIFIERS.items():
         pipe = _make_pipeline(clf)
@@ -120,7 +114,7 @@ def train_and_evaluate_all(X_train, X_test, y_train, y_test) -> pd.DataFrame:
 
 def train_best_model(X_train, X_test, y_train, y_test,
                      best_name: str = "Logistic Regression"):
-    """Train the selected model, print classification report."""
+    
     clf = CLASSIFIERS[best_name]
     pipe = _make_pipeline(clf)
     pipe.fit(X_train, y_train)
@@ -134,7 +128,7 @@ def train_best_model(X_train, X_test, y_train, y_test,
 
 
 def plot_confusion_matrix(y_test, y_pred, categories: list):
-    """Plotly heatmap confusion matrix."""
+    
     cm = confusion_matrix(y_test, y_pred, labels=categories)
     fig = px.imshow(
         cm, x=categories, y=categories,
@@ -149,7 +143,7 @@ def plot_confusion_matrix(y_test, y_pred, categories: list):
 
 
 def plot_model_comparison(results_df: pd.DataFrame):
-    """Grouped bar chart comparing classifier performance."""
+    
     melted = results_df.melt(id_vars="Model",
                               value_vars=["Accuracy", "Macro F1"],
                               var_name="Metric", value_name="Score")
@@ -165,7 +159,7 @@ def plot_model_comparison(results_df: pd.DataFrame):
 
 
 def save_model(pipeline):
-    """Save trained pipeline to disk."""
+    
     MODELS_DIR.mkdir(exist_ok=True)
     with open(MODEL_PATH, "wb") as f:
         pickle.dump(pipeline, f)
@@ -173,7 +167,7 @@ def save_model(pipeline):
 
 
 def load_model():
-    """Load saved pipeline. Returns None if not found."""
+    
     if not MODEL_PATH.exists():
         return None
     with open(MODEL_PATH, "rb") as f:
@@ -181,17 +175,13 @@ def load_model():
 
 
 def predict_category(pipeline, job_description: str) -> str:
-    """Predict category from raw job description."""
+    
     cleaned = clean_for_nlp(job_description)
     return pipeline.predict([cleaned])[0]
 
 
 def predict_proba_category(pipeline, job_description: str) -> pd.DataFrame:
-    """
-    Return probability distribution over categories.
-    Works for Logistic Regression (has predict_proba).
-    For SVM/NB, returns a hard prediction.
-    """
+    
     cleaned = clean_for_nlp(job_description)
     clf_step = pipeline.named_steps["clf"]
     if hasattr(clf_step, "predict_proba"):
