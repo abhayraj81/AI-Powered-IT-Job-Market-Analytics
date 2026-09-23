@@ -1,6 +1,4 @@
 """
-app.py
-======
 AI-Powered IT Job Market Analytics & Skill Gap Analyzer
 Streamlit Interactive Dashboard — IT_Job_Roles_Skills.csv
 
