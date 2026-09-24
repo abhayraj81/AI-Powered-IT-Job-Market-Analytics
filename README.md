@@ -209,7 +209,8 @@ Opens at `http://localhost:8501`
 
 ## Author
 
-**Name:** Abhay Raj 
+**Name:** Abhay Raj
+
 **Program:** MCA  
 **Institution:** Allenhouse Institute of Technology  
 **Internship:** AICTE | IBM SkillsBuild Data Analytics with AI Internship 2026
