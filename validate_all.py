@@ -51,9 +51,8 @@ def warn_if(condition: bool, message: str) -> None:
 
 print("=== VALIDATION (IT_Job_Roles_Skills.csv) ===")
 
-# ---------------------------------------------------------------------------
 # 1. Preprocessing
-# ---------------------------------------------------------------------------
+
 print("\n-- 1. Preprocessing")
 from src.preprocessing import (
     load_and_clean, get_dataset_stats, infer_category, skill_key,
